@@ -56,16 +56,19 @@ else:
 		files = os.listdir(sys.argv[1])
 		
 		for name in files:
-			print("\nProcessing " + name)
-			#thumbnail already exists
-			if os.path.isfile(sys.argv[2] + "/thumbnails/" + name):
-				#get modified date of both image and thumbnail to determine if the thumbnail is out of date.
-				orig_date = os.path.getmtime(sys.argv[1] + "/" + name)
-				thumb_date = os.path.getmtime(sys.argv[2] + "/thumbnails/" + name)
-				# orig_date will be greater than thumb_date if it has been modified
-				if orig_date > thumb_date:
-					generate_thumbnail(sys.argv[1], sys.argv[2], name)
-			else:
-				generate_thumbnail(sys.argv[1], sys.argv[2], name)				
+			# make sure it's not a directory or something, this isn't recursive
+			if os.path.isfile(sys.argv[1] + "/" + name):
+				
+				#thumbnail already exists
+				if os.path.isfile(sys.argv[2] + "/thumbnails/" + name):
+					#get modified date of both image and thumbnail to determine if the thumbnail is out of date.
+					orig_date = os.path.getmtime(sys.argv[1] + "/" + name)
+					thumb_date = os.path.getmtime(sys.argv[2] + "/thumbnails/" + name)
+					# orig_date will be greater than thumb_date if it has been modified
+					if orig_date > thumb_date:
+						generate_thumbnail(sys.argv[1], sys.argv[2], name)
+				else:
+					generate_thumbnail(sys.argv[1], sys.argv[2], name)				
 		
+		#Thumbnail updating done; time to generate the html
 	
