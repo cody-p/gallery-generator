@@ -115,7 +115,7 @@ else:
 				with open(insertion_target, "r") as insertion_file:
 					replacement_string = insertion_file.read()
 				replacement_string = replacement_string.replace("REPLACE_ME", html_file.read())
-				with open(final_dir + "/index.html", "w+") as final_file:
+				with open(final_dir + "/gallery.html", "w+") as final_file:
 					final_file.write(replacement_string)
 					
 					
