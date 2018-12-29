@@ -107,7 +107,7 @@ else:
 			with open(html_filename, "a+") as html_file:
 				for name in files:
 					html_file.write('<div class="info-box">\
-									\n\t<a href="https://files.voidlurker.net/' + name + '">\
+									\n\t<a href="https://files.voidlurker.net/images/' + name + '">\
 									\n\t\t<img src="https://files.voidlurker.net/thumbnails/' + name + '"/><p>' + name + '</p>\
 									\n\t</a>\
 									\n</div>\n')
